@@ -5,27 +5,27 @@ using UnityEngine;
 public class test : MonoBehaviour
 {
 
-    private void Update()
-    {
+    //private void Update()
+    //{
 
 
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+    //    Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
-        Plane plane = new Plane(Vector3.forward, 0);
+    //    Plane plane = new Plane(Vector3.forward, 0);
 
-        if (plane.Raycast(ray, out float distance))
-        {
-            Vector3 targetPosition = ray.GetPoint(distance);
+    //    if (plane.Raycast(ray, out float distance))
+    //    {
+    //        Vector3 targetPosition = ray.GetPoint(distance);
 
-            Vector3 direction = targetPosition - transform.position;
-            direction.z = 0;
+    //        Vector3 direction = targetPosition - transform.position;
+    //        direction.z = 0;
 
-            transform.rotation = Quaternion.LookRotation(Vector3.forward, direction);
-        }
+    //        transform.rotation = Quaternion.LookRotation(Vector3.forward, direction);
+    //    }
 
 
 
-    }
+    //}
 
     //private void Update()
     //{
@@ -35,6 +35,14 @@ public class test : MonoBehaviour
     //    targetPosition.z = 0;
     //    transform.rotation = Quaternion.LookRotation(Vector3.forward, targetPosition);
     //}
+
+
+    private void Update()
+    {
+        //카메라 내 좌표값을 사용할수 있게함
+        Vector2 mouse = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        transform.rotation = Quaternion.LookRotation(Vector3.forward, mouse);
+    }
 
 
 
